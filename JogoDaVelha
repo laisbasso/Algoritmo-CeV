@@ -1,0 +1,85 @@
+Algoritmo "JogoDaVelha"
+
+Var
+m: vetor [1..3, 1..3] de caractere
+nvetor: vetor [1..9] de caractere
+l, c, n, posi, fim: inteiro
+car: caractere
+f: logico
+
+Procedimento vel
+Inicio
+Limpatela
+n <- 0
+Para l de 1 ate 3 faça
+Escreval("+---+---+---+")
+  Para c de 1 ate 3 faça
+  n <- n + 1
+  m[l,c] <- nvetor[n]
+    Se (m[l,c] <> "") então
+      Escreva ("| ", m[l,c], " ")
+      Senão
+        Escreva("|", n, " ")
+    Fimse
+Fimpara
+Escreval("|")
+Fimpara
+Escreval("+---+---+---+")
+ver
+Fimprocedimento
+
+Procedimento cara
+Inicio
+Se (car = "O") entao
+  car <- "X"
+Senão
+  car <- "O"
+Fimse
+Fimprocedimento
+
+Procedimento proc
+Inicio
+Escreva("Vai jogar [", car, "] em qual posição? ")
+Leia(posi)
+Se (nvetor[posi] <> "X") e (nvetor[posi] <> "O") então
+  nvetor[posi] <- car
+  fim <- fim + 1
+  vel
+Senão
+  Escreval("Jogada inválida!")
+  proc
+Fimse
+Fimprocedimento
+
+Procedimento ver
+Inicio
+Se (fim = 9) então
+  f <- verdadeiro
+Fimse
+Se (m[1,1] = car) e (m[1,1] = m[2,2]) e (m[2,2] = m[3,3]) então
+  f <- verdadeiro
+Fimse
+Se (m[1,3] = car) e (m[1,3] = m[2,2]) e (m[2,2] = m[3,1]) então
+  f <- verdadeiro
+Fimse
+Para c de 1 ate 3 faça
+Se (m[1,c] = car) e (m[1,c] =  m[2,c]) e (m[2,c] = m[3,c]) então
+  f <- verdadeiro
+Fimse
+Fimpara
+Para l de 1 ate 3 faça
+Se (m[l,1] = car) e (m[l,1] =  m[l,2]) e (m[l,2] = m[l,3]) então
+  f <- verdadeiro
+Fimse
+Fimpara
+Fimprocedimento
+
+Inicio
+car <- "O"
+Enquanto (f = falso) faça
+  cara
+  vel
+  proc
+FimEnquanto
+Escreval("Jogo finalizado!")
+Fimalgoritmo
