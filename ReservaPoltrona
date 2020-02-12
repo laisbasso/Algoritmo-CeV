@@ -1,0 +1,38 @@
+Algoritmo "ReservaPoltrona"
+
+Var
+res: vetor [1..10] de inteiro
+n: inteiro
+r: caractere
+
+Procedimento pol
+Inicio
+Limpatela
+Para n de 1 ate 10 faça
+  Se (res[n] = 0) então
+    Escreva("[B", n, "]")
+    Senão
+      Escreva("[---]")
+  Fimse
+Fimpara
+Escreval()
+Escreval("---------------------------------------------------")
+Fimprocedimento
+
+Inicio
+Repita
+  pol
+  Escreva("Reservar a poltrona: B")
+  Leia(n)
+  Se (res[n] <> n) então
+    res[n] <- n
+    Escreval("Poltrona B", n, " reservada!")
+  Senão
+    Escreval("Erro: Poltrona B", n, " ocupada!")
+  Fimse
+  Escreva("Quer reservar outro? [S/N] ")
+  Leia(r)
+Até (maiusc(r) = "N")
+pol
+Escreval("Aproveite o filme!")
+Fimalgoritmo
